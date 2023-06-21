@@ -34,7 +34,7 @@ public class Running extends Application {
 	@Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../GUI/mainmenu/FXML/intro.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../gui/Menu/Menu.fxml")));
             primaryStage.getIcons().add(new Image(new File("src/gui/media/IconVirus.png").toURI().toString()));
             primaryStage.setTitle("Virus");
             primaryStage.setResizable(false);
