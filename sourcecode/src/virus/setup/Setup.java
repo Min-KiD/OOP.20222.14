@@ -134,15 +134,15 @@ public class Setup {
 		adeno = adeno1;
 		astro = astro1;
 		reov = reov1;
-	}
-	
-	public static List<Virus> getVirusList() {
 		VirusList.add(corona);
         VirusList.add(herpes);
         VirusList.add(retro);
         VirusList.add(adeno);
         VirusList.add(astro);
         VirusList.add(reov);
+	}
+	
+	public static List<Virus> getVirusList() {
 		return VirusList;
 	}
 

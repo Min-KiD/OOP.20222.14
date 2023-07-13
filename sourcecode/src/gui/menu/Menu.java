@@ -80,8 +80,6 @@ public class Menu implements Initializable {
         stage.setX(event.getScreenX()-x);
         stage.setY(event.getScreenY()-y);
 
-
-
     }
     @FXML
     void pressed(MouseEvent event) {

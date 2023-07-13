@@ -31,6 +31,12 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import java.util.List;
+import java.util.ArrayList;
+import virus.Virus;
+import virus.enveloped.*;
+import virus.nonenveloped.*;
+import virus.setup.Setup;
 
 public class MainController implements Initializable {
 //    private Parent root;
@@ -55,98 +61,27 @@ public class MainController implements Initializable {
     @FXML
     private ImageView coronaVirusView;
     
+    private Virus chosenItem;
+    
     public void initialize(URL arg0, ResourceBundle arg1) {
-//        file = new File("src/GUI/mainmenu/media/background_music.mp3");
-//        Media media = new Media(file.toURI().toString());
-//        music = new MediaPlayer(media);
-//        music.setCycleCount(1000);
-//        music.play();
-//        this.tmStopMusic = new Timeline(new KeyFrame(Duration.millis(1500), new KeyValue(music.volumeProperty(), 0.0)));
-//        this.tmfadedMusic = new Timeline(new KeyFrame(Duration.millis(2000), new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                music.stop();
-//            }
-//        }));
+    	
+    	for (Virus v: Setup.getVirusList()) {
+    		if (v instanceof EnvelopedVirus) {
+    			VirusItem item = new VirusItem(v.getClass().getSimpleName(), v);
+    			item.setOnAction(new EventHandler<ActionEvent>() {
+    			    @Override public void handle(ActionEvent e) {
+    			        chosenItem = item.getVirus();
+    			        showVirusScene();
+    			    }
+    			});
+    			envelopeVirusView.getChildren().add(item);
+    		} else if (v instanceof NonenvelopedVirus){
+    			nonEnvelopeVirusView.getChildren().add(new VirusItem(v.getClass().getSimpleName(), v));
+    		}
+    	}
     	
         envelopeVirusView.setVisible(envelopeVirusStatus);
         nonEnvelopeVirusView.setVisible(nonEnvelopeVirusStatus);
-    }
-
-
-    @FXML
-    void coronaScene(ActionEvent event) throws IOException {
-        System.out.println("pressed");
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/enveloped/corona/CoronaVirus.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-        scene = new Scene(root);
-        stage.setScene(scene);
-        //tmfadedMusic.play();
-        //tmStopMusic.play();
-        stage.show(); 
-
-    }
-
-    @FXML
-    void hivScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/enveloped/herpes/herpes.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        tmfadedMusic.play();
-        tmStopMusic.play();
-        stage.show();
-
-    }
-
-    @FXML
-    void rhinoScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/nonenvelope/adeno/adeno.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        tmfadedMusic.play();
-        tmStopMusic.play();
-        stage.show();
-
-    }
-
-    @FXML
-    void noroScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/nonenvelope/astro/astro.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        tmfadedMusic.play();
-        tmStopMusic.play();
-        stage.show();
-
-    }
-
-    @FXML
-    void polioScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/nonenvelope/reov/reov.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        tmfadedMusic.play();
-        tmStopMusic.play();
-        stage.show();
-
-    }
-
-    @FXML
-    void covidScene(ActionEvent event) throws IOException {
-    	System.out.println("Invoked");
-    	Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/envelope/retro/retro.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.setRoot(root);
-        stage.setScene(scene);
-        tmfadedMusic.play();
-        tmStopMusic.play();
-        stage.show();
     }
 
     @FXML
@@ -199,7 +134,7 @@ public class MainController implements Initializable {
         alert.setHeaderText("DO YOU SURE TO EXIT?");
         alert.setContentText("Choose your option");
         alert.initStyle(StageStyle.UNDECORATED);
-        ImageView icon = new ImageView(new File("src/GUI/mainmenu/media/your_icon.png").toURI().toString());
+        ImageView icon = new ImageView(new File("src/gui/media/IconVirus.png").toURI().toString());
         icon.setFitHeight(50);
         icon.setFitWidth(50);
         alert.getDialogPane().setGraphic(icon);
@@ -208,7 +143,6 @@ public class MainController implements Initializable {
         ButtonType buttonTypeNo = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
 
         DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(new File("src/GUI/mainmenu/css/myDialogs.css").toURI().toString());
         dialogPane.getStyleClass().add("myDialog");
 
 
@@ -236,6 +170,10 @@ public class MainController implements Initializable {
     void pressed(MouseEvent event) {
         x = event.getSceneX();
         y = event.getSceneY();
+    }
+    
+    public void showVirusScene() {
+    	
     }
 
 }
