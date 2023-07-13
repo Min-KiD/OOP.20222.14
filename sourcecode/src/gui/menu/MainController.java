@@ -6,12 +6,11 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-//import javafx.animation.KeyFrame;
-//import javafx.animation.KeyValue;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-//import javafx.event.EventHandler;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,12 +25,12 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-//import javafx.scene.media.Media;
-//import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-//import javafx.util.Duration;
+import javafx.util.Duration;
 
 public class MainController implements Initializable {
 //    private Parent root;
@@ -50,25 +49,12 @@ public class MainController implements Initializable {
     @FXML
     private Button helpButton;
     @FXML
-    private Button ebolaButton;
-    @FXML
     private VBox envelopeVirusView;
     @FXML
     private VBox nonEnvelopeVirusView;
     @FXML
-    private ImageView rhinoVirusView;
-    @FXML
-    private ImageView noroVirusView;
-    @FXML
-    private ImageView polioVirusView;
-    @FXML
     private ImageView coronaVirusView;
-    @FXML
-    private ImageView ebolaVirusView;
-    @FXML
-    private ImageView hivView;
-
-
+    
     public void initialize(URL arg0, ResourceBundle arg1) {
 //        file = new File("src/GUI/mainmenu/media/background_music.mp3");
 //        Media media = new Media(file.toURI().toString());
@@ -82,18 +68,27 @@ public class MainController implements Initializable {
 //                music.stop();
 //            }
 //        }));
+    	
+        envelopeVirusView.setVisible(envelopeVirusStatus);
+        nonEnvelopeVirusView.setVisible(nonEnvelopeVirusStatus);
     }
 
 
     @FXML
-    void ebolaScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/enveloped/corona/corona.fxml")));
+    void coronaScene(ActionEvent event) throws IOException {
+        System.out.println("pressed");
+        try {
+        	Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/enveloped/corona/CoronaVirus.fxml")));
+        } catch (Exception e) {
+        	System.out.println("bug");
+        }
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        /*
         scene = new Scene(root);
         stage.setScene(scene);
         //tmfadedMusic.play();
         //tmStopMusic.play();
-        stage.show();
+        stage.show(); */
 
     }
 
@@ -147,7 +142,8 @@ public class MainController implements Initializable {
 
     @FXML
     void covidScene(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/envelope/retro/retro.fxml")));
+    	System.out.println("Invoked");
+    	Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/envelope/retro/retro.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.setRoot(root);
@@ -173,7 +169,6 @@ public class MainController implements Initializable {
 
     @FXML
     void envelopeVirus(ActionEvent e) {
-    	System.out.println("Invoked");
         if (!envelopeVirusStatus) {
             envelopeVirusView.setVisible(true);
             envelopeVirusStatus = true;

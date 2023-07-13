@@ -37,7 +37,7 @@ public class Menu implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-    	this.file = new File("src/gui/menu/video.mp4");
+    	this.file = new File("src/gui/media/video.mp4");
         media = new Media(file.toURI().toString());
     	MediaPlayer mediaPlayer = new MediaPlayer(media);
         Duration a = mediaPlayer.getStartTime();

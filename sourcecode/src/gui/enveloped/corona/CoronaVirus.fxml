@@ -12,7 +12,7 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="576.0" prefWidth="1024.0" style="-fx-background-color: #f1f3f4;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.envelope.covid.CovidController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="576.0" prefWidth="1024.0" style="-fx-background-color: #f1f3f4;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.enveloped.corona.CoronaVirusController">
    <children>
       <AnchorPane fx:id="viewField" maxHeight="-Infinity" maxWidth="-Infinity" onMousePressed="#collapse" prefHeight="470.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -27,7 +27,7 @@
                   <Button layoutX="644.0" layoutY="235.0" mnemonicParsing="false" onAction="#setMP" prefHeight="32.0" prefWidth="137.0" stylesheets="@../css/strucButton.css" text="Membrane protein" />
                   <Button layoutX="117.0" layoutY="242.0" mnemonicParsing="false" onAction="#setSG" prefHeight="32.0" prefWidth="137.0" stylesheets="@../css/strucButton.css" text="Spike Glycoprotein" />
                   <Button layoutX="117.0" layoutY="132.0" mnemonicParsing="false" onAction="#setNP" prefHeight="35.0" prefWidth="147.0" stylesheets="@../css/strucButton.css" text="RNA and N protein" />
-                  <Button layoutX="103.0" layoutY="352.0" mnemonicParsing="false" onAction="#setLM" prefHeight="35.0" prefWidth="118.0" stylesheets="@../css/strucButton.css" text="Lipid membrane" />
+                  <Button layoutX="103.0" layoutY="352.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="118.0" stylesheets="@../css/strucButton.css" text="Lipid membrane" />
                   <Button layoutX="610.0" layoutY="134.0" mnemonicParsing="false" onAction="#setHe" prefHeight="32.0" prefWidth="171.0" text="Hemagglutinin esterase" />
                   <Label fx:id="setData" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="724.0" layoutY="12.0" prefHeight="532.0" prefWidth="285.0">
                      <font>
@@ -86,7 +86,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <Button layoutX="996.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#exit" prefHeight="27.0" prefWidth="35.0" stylesheets="@../../../source/CSS/exitButton.css" text="✕" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button layoutX="996.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="35.0" stylesheets="@../../../source/CSS/exitButton.css" text="✕" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Button layoutX="953.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#minimize" prefHeight="27.0" prefWidth="35.0" stylesheets="@../../../source/CSS/miniButton.css" text="―" textFill="WHITE" AnchorPane.rightAnchor="35.0" />
    </children>
-</AnchorPane>
+</fx:root>

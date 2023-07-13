@@ -1,12 +1,9 @@
-package GUI.envelope.covid;
-
+package gui.enveloped.corona;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import Main.Main;
 import gui.VirusesController;
-import GUI.GeneralVirusController;
+import gui.menu.VirusController;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,10 +13,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import virus.setup.Setup;
 
-public class CoronaVirusController extends VirusesController implements Initializable {
+
+
+public class CoronaVirusController extends VirusController implements Initializable {
     @FXML
-    private ImageView image, hostCell1, hostCell2, virus1, virus2;
+    private ImageView image, hostCell1, hostCell2, virus1, virus2;;
     @FXML
     private Label setData;
     @FXML
@@ -153,37 +153,49 @@ public class CoronaVirusController extends VirusesController implements Initiali
 
     @FXML
     public void setEP(ActionEvent e) { // set detail for Envelope Protein
-        setData.setText(Main.corona.getEvenlopeProtein());
+
+        setData.setText(Setup.corona.getEnvelopeProtein());
+
         setData.setMaxWidth(260);
         setData.setWrapText(true);
     }
 
     @FXML
     public void setMP(ActionEvent e) { //set detail for M protein
-        setData.setText(Main.corona.getMprotein());
+
+        setData.setText(Setup.corona.getMprotein());
+
         setData.setMaxWidth(260);
         setData.setWrapText(true);
     }
 
     @FXML
     public void setSG(ActionEvent e) { //set detail for spike Glycoprotein
-        setData.setText(Main.corona.getSpike());
+
+        setData.setText(Setup.corona.getEnvelopedVirus().getEnvelopedVirus());
+
         setData.setMaxWidth(260);
         setData.setWrapText(true);
     }
 
     @FXML
     public void setNP(ActionEvent e) {// set detail for N protein and RNA
-        setData.setText(Main.corona.getTypeOfNucleocapsid().getTypeOfStructureOfCapsid());
+        setData.setText(Setup.corona.getTypeOfAcidNucleic().getTypeOfAcidNucleic());
         setData.setMaxWidth(260);
         setData.setWrapText(true);
     }
 
     @FXML
     public void setLM(ActionEvent e) { //set detail for Lipid membrane
-        setData.setText(Main.corona.getEnvelopeOfVirus().getEnvelopeOfVirus());
+
+        setData.setText(Setup.corona.getEnvelopedVirus().getEnvelopedVirus());
         setData.setMaxWidth(260);
         setData.setWrapText(true);
+    }
+    
+    @FXML
+    public void setHe(ActionEvent e) { //set detail for Lipid membrane
+        System.out.println("Set HE smt");
     }
 
 }
