@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 //import javafx.util.Duration;
 
-public class Main implements Initializable {
+public class MainController implements Initializable {
 //    private Parent root;
     private double x = 0;
     private double y = 0;
@@ -173,7 +173,7 @@ public class Main implements Initializable {
 
     @FXML
     void envelopeVirus(ActionEvent e) {
-
+    	System.out.println("Invoked");
         if (!envelopeVirusStatus) {
             envelopeVirusView.setVisible(true);
             envelopeVirusStatus = true;
@@ -239,15 +239,12 @@ public class Main implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
-
-
     }
 
     @FXML
     void pressed(MouseEvent event) {
         x = event.getSceneX();
         y = event.getSceneY();
-
     }
 
 }

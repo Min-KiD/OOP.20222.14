@@ -37,11 +37,11 @@ public class Menu implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-//        this.file = new File("src/GUI/mainmenu/media/video.mp4");
-//        media = new Media(file.toURI().toString());
-          MediaPlayer mediaPlayer = new MediaPlayer(media);
-//        Duration a = mediaPlayer.getStartTime();
-//        Duration b = mediaPlayer.getStopTime();
+    	this.file = new File("src/gui/menu/video.mp4");
+        media = new Media(file.toURI().toString());
+    	MediaPlayer mediaPlayer = new MediaPlayer(media);
+        Duration a = mediaPlayer.getStartTime();
+    	Duration b = mediaPlayer.getStopTime();
 
         mediaView.setMediaPlayer(mediaPlayer);
         mediaPlayer.setOnReady(new Runnable() {
@@ -51,7 +51,7 @@ public class Menu implements Initializable {
                     @Override
                     public void handle(Event event) {
                         try {
-                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/mainmenu/FXML/mainFxml.fxml")));
+                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/menu/Main.fxml")));
                             stage = (Stage) ((Node) Menu.this.mediaView).getScene().getWindow();
                             scene = new Scene(root);
                             stage.setScene(scene);

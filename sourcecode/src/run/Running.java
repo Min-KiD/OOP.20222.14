@@ -26,7 +26,7 @@ public class Running extends Application {
 	@Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../gui/Menu/Menu.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/menu/Menu.fxml")));
             primaryStage.getIcons().add(new Image(new File("src/gui/media/IconVirus.png").toURI().toString()));
             primaryStage.setTitle("Virus");
             primaryStage.setResizable(false);
@@ -44,10 +44,10 @@ public class Running extends Application {
 		Setup setupIni = new Setup(); 	
 		setupIni.setup();
 		List<Virus> VirusList = setupIni.getVirusList();
-			for (Virus item : VirusList){
-	        	System.out.println(item.getClass().getSimpleName()+" is a " + item.getTypeOfAcidNucleic().getTypeOfAcidNucleic() + " virus");
-			}
-	        //launch(args);
+		for (Virus item : VirusList){
+        	System.out.println(item.getClass().getSimpleName()+" is a " + item.getTypeOfAcidNucleic().getTypeOfAcidNucleic() + " virus");
+		}
+		launch(args);
 	}
 
 }
