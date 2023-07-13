@@ -282,7 +282,7 @@ public class VirusController {
     // home button
     @FXML
     public void home(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/mainmenu/FXML/mainFxml.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/menu/Main.fxml")));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

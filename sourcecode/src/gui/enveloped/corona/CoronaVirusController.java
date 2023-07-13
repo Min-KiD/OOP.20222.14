@@ -2,7 +2,6 @@ package gui.enveloped.corona;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import gui.VirusesController;
 import gui.menu.VirusController;
 import javafx.animation.*;
 import javafx.event.ActionEvent;

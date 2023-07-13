@@ -77,18 +77,14 @@ public class MainController implements Initializable {
     @FXML
     void coronaScene(ActionEvent event) throws IOException {
         System.out.println("pressed");
-        try {
-        	Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/enveloped/corona/CoronaVirus.fxml")));
-        } catch (Exception e) {
-        	System.out.println("bug");
-        }
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/enveloped/corona/CoronaVirus.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        /*
+        
         scene = new Scene(root);
         stage.setScene(scene);
         //tmfadedMusic.play();
         //tmStopMusic.play();
-        stage.show(); */
+        stage.show(); 
 
     }
 
