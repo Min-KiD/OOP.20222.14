@@ -1,4 +1,4 @@
-package gui.menu;
+package gui.Controller;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;

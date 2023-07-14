@@ -19,7 +19,7 @@ public class Running extends Application {
 	@Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/menu/Menu.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/View/Menu.fxml")));
             primaryStage.getIcons().add(new Image(new File("src/gui/media/IconVirus.png").toURI().toString()));
             primaryStage.setTitle("Virus");
             primaryStage.initStyle(StageStyle.DECORATED);

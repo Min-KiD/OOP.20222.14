@@ -1,4 +1,4 @@
-package gui.menu;
+package gui.Controller;
 
 import java.io.File;
 import java.net.URL;
@@ -51,7 +51,7 @@ public class Menu implements Initializable {
                     @Override
                     public void handle(Event event) {
                         try {
-                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/menu/Main.fxml")));
+                            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/View/Main.fxml")));
                             stage = (Stage) ((Node) Menu.this.mediaView).getScene().getWindow();
                             scene = new Scene(root);
                             stage.setScene(scene);

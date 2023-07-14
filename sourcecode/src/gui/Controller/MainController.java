@@ -1,4 +1,4 @@
-package gui.menu;
+package gui.Controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,9 +6,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,17 +20,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
-import java.util.List;
-import java.util.ArrayList;
 import virus.Virus;
 import virus.enveloped.*;
 import virus.nonenveloped.*;
@@ -43,13 +38,10 @@ public class MainController implements Initializable {
     private double x = 0;
     private double y = 0;
     private Stage stage;
-    private Scene scene;
 //    private MediaPlayer music;
 //    private File file;
     private boolean envelopeVirusStatus = false;
     private boolean nonEnvelopeVirusStatus = false;
-    private Timeline tmfadedMusic;
-    private Timeline tmStopMusic;
     @FXML
     private MediaView mediaView;
     @FXML
@@ -60,6 +52,10 @@ public class MainController implements Initializable {
     private VBox nonEnvelopeVirusView;
     @FXML
     private ImageView coronaVirusView;
+    @FXML
+    private ScrollPane scroll;
+    @FXML
+    private GridPane grid;
     
     private Virus chosenItem;
     
@@ -69,14 +65,32 @@ public class MainController implements Initializable {
     		if (v instanceof EnvelopedVirus) {
     			VirusItem item = new VirusItem(v.getClass().getSimpleName(), v);
     			item.setOnAction(new EventHandler<ActionEvent>() {
-    			    @Override public void handle(ActionEvent e) {
-    			        chosenItem = item.getVirus();
-    			        showVirusScene();
+    			    			@Override 
+    			    			public void handle(ActionEvent e) {
+			    			        chosenItem = item.getVirus();
+			    			        try {
+										showVirusScene(e);
+									} catch (IOException e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									}
     			    }
     			});
     			envelopeVirusView.getChildren().add(item);
     		} else if (v instanceof NonenvelopedVirus){
-    			nonEnvelopeVirusView.getChildren().add(new VirusItem(v.getClass().getSimpleName(), v));
+    			VirusItem item = new VirusItem(v.getClass().getSimpleName(), v);
+    			item.setOnAction(new EventHandler<ActionEvent>() {
+    			    @Override public void handle(ActionEvent e) {
+    			        chosenItem = item.getVirus();
+    			        try {
+							showVirusScene(e);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+    			    }
+    			});
+    			nonEnvelopeVirusView.getChildren().add(item);
     		}
     	}
     	
@@ -134,7 +148,7 @@ public class MainController implements Initializable {
         alert.setHeaderText("DO YOU SURE TO EXIT?");
         alert.setContentText("Choose your option");
         alert.initStyle(StageStyle.UNDECORATED);
-        ImageView icon = new ImageView(new File("src/gui/media/IconVirus.png").toURI().toString());
+        ImageView icon = new ImageView(new File("/gui/media/IconVirus.png").toURI().toString());
         icon.setFitHeight(50);
         icon.setFitWidth(50);
         alert.getDialogPane().setGraphic(icon);
@@ -172,8 +186,17 @@ public class MainController implements Initializable {
         y = event.getSceneY();
     }
     
-    public void showVirusScene() {
-    	
+    public void showVirusScene(ActionEvent event) throws IOException {
+    	FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/gui/View/VirusView.fxml")));
+		VirusController controller = new VirusController(chosenItem);
+    	loader.setController(controller);
+    	stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	Parent root = loader.load();
+    	controller.check();
+        Scene scene1 = new Scene(root);
+        scene1.setRoot(root);
+        stage.setScene(scene1);
+        stage.show();
     }
 
 }
