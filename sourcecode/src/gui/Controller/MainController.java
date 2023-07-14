@@ -6,12 +6,12 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+import javafx.scene.layout.Region;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,13 +24,11 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import virus.Virus;
 import virus.enveloped.*;
-import virus.nonenveloped.*;
 import virus.setup.Setup;
 
 public class MainController implements Initializable {
@@ -47,53 +45,93 @@ public class MainController implements Initializable {
     @FXML
     private Button helpButton;
     @FXML
-    private VBox envelopeVirusView;
+    private ScrollPane envelopeVirusView;
     @FXML
-    private VBox nonEnvelopeVirusView;
+    private ScrollPane nonEnvelopeVirusView;
     @FXML
     private ImageView coronaVirusView;
     @FXML
-    private ScrollPane scroll;
-    @FXML
     private GridPane grid;
+    @FXML
+    private GridPane grid1;
+    
+    private MyListener myListener;
     
     private Virus chosenItem;
     
     public void initialize(URL arg0, ResourceBundle arg1) {
     	
-    	for (Virus v: Setup.getVirusList()) {
-    		if (v instanceof EnvelopedVirus) {
-    			VirusItem item = new VirusItem(v.getClass().getSimpleName(), v);
-    			item.setOnAction(new EventHandler<ActionEvent>() {
-    			    			@Override 
-    			    			public void handle(ActionEvent e) {
-			    			        chosenItem = item.getVirus();
-			    			        try {
-										showVirusScene(e);
-									} catch (IOException e1) {
-										// TODO Auto-generated catch block
-										e1.printStackTrace();
-									}
-    			    }
-    			});
-    			envelopeVirusView.getChildren().add(item);
-    		} else if (v instanceof NonenvelopedVirus){
-    			VirusItem item = new VirusItem(v.getClass().getSimpleName(), v);
-    			item.setOnAction(new EventHandler<ActionEvent>() {
-    			    @Override public void handle(ActionEvent e) {
-    			        chosenItem = item.getVirus();
-    			        try {
-							showVirusScene(e);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-    			    }
-    			});
-    			nonEnvelopeVirusView.getChildren().add(item);
-    		}
-    	}
-    	
+    	//stage = new Stage();
+    	myListener = new MyListener() {
+            @Override
+            public void onClickListener(Virus virus, MouseEvent event) throws IOException {
+                chosenItem = virus;
+                System.out.println(virus);
+                showVirusScene(event);
+            }
+        };
+        int column = 0;
+        int row = 1;
+        for (int i = 0; i < Setup.getVirusList().size(); i++) {
+            if (Setup.getVirusList().get(i) instanceof EnvelopedVirus) {
+	        	FXMLLoader fxmlLoader = new FXMLLoader();
+	            fxmlLoader.setLocation(getClass().getResource("/gui/View/VirusItemView.fxml"));
+	            Parent anchorPane;
+				try {
+					anchorPane = fxmlLoader.load();
+					VirusItem itemController = fxmlLoader.getController();
+		            itemController.setData(Setup.getVirusList().get(i),myListener);
+		            if (column == 3) {
+		                column = 0;
+		                row++;
+		            }
+		            grid.add(anchorPane, column++, row); //(child,column,row)
+		            //set grid width
+		            grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+		            grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+		            grid.setMaxWidth(Region.USE_PREF_SIZE);
+		            //set grid height
+		            grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+		            grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+		            grid.setMaxHeight(Region.USE_PREF_SIZE);
+	
+		            GridPane.setMargin(anchorPane, new Insets(10));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            } else {
+            	FXMLLoader fxmlLoader = new FXMLLoader();
+	            fxmlLoader.setLocation(getClass().getResource("/gui/View/VirusItemView.fxml"));
+	            Parent anchorPane;
+				try {
+					anchorPane = fxmlLoader.load();
+					VirusItem itemController = fxmlLoader.getController();
+		            itemController.setData(Setup.getVirusList().get(i),myListener);
+		            if (column == 3) {
+		                column = 0;
+		                row++;
+		            }
+		            grid1.add(anchorPane, column++, row); //(child,column,row)
+		            //set grid width
+		            grid1.setMinWidth(Region.USE_COMPUTED_SIZE);
+		            grid1.setPrefWidth(Region.USE_COMPUTED_SIZE);
+		            grid1.setMaxWidth(Region.USE_PREF_SIZE);
+		            //set grid height
+		            grid1.setMinHeight(Region.USE_COMPUTED_SIZE);
+		            grid1.setPrefHeight(Region.USE_COMPUTED_SIZE);
+		            grid1.setMaxHeight(Region.USE_PREF_SIZE);
+	
+		            GridPane.setMargin(anchorPane, new Insets(10));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            	
+            }
+            
+        }
+
         envelopeVirusView.setVisible(envelopeVirusStatus);
         nonEnvelopeVirusView.setVisible(nonEnvelopeVirusStatus);
     }
@@ -133,8 +171,6 @@ public class MainController implements Initializable {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/mainmenu/FXML/help.fxml")));
             Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e1) {
@@ -186,13 +222,13 @@ public class MainController implements Initializable {
         y = event.getSceneY();
     }
     
-    public void showVirusScene(ActionEvent event) throws IOException {
+    public void showVirusScene(MouseEvent event) throws IOException {
+    	Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/gui/View/VirusView.fxml")));
 		VirusController controller = new VirusController(chosenItem);
     	loader.setController(controller);
-    	stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	Parent root = loader.load();
-    	controller.check();
+    	controller.check(); //try to remove this 
         Scene scene1 = new Scene(root);
         scene1.setRoot(root);
         stage.setScene(scene1);

@@ -1,34 +1,45 @@
 package gui.Controller;
 
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import virus.Virus;
 
-public class VirusItem extends Button {
+import java.io.IOException;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+
+public class VirusItem {
 	
 	private Virus virus;
+	private MyListener myListener;
+	
+	@FXML
+    private ImageView itemImage;
+
+    @FXML
+    private Label itemLabel;
+
+    @FXML
+    private ImageView itemIcon;
+    
+    
+    @FXML
+    private void click(MouseEvent mouseEvent) throws IOException {
+        myListener.onClickListener(virus, mouseEvent);
+    }
+    
 	
 	public VirusItem() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public VirusItem(String arg0) {
-		super(arg0);
-		// TODO Auto-generated constructor stub
-	}
-
-	public VirusItem(String arg0, Node arg1) {
-		super(arg0, arg1);
-		// TODO Auto-generated constructor stub
-	}
-	
-	public VirusItem(String arg0, Virus v) {
-		super(arg0);
-		this.virus = v;
-	}
-	
-	public Virus getVirus() {
-		return virus;
-	}
+	public void setData(Virus virus, MyListener myListener) {
+        this.virus = virus;
+        this.myListener = myListener;
+        itemLabel.setText(virus.getClass().getSimpleName());
+        //Image image = new Image(getClass().getResourceAsStream(fruit.getImgSrc()));
+        //img.setImage(image);
+    }
 
 }

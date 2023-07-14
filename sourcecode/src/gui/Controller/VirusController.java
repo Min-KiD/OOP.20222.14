@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -31,7 +32,7 @@ public class VirusController {
     private MenuButton specialAttributes;
     
     @FXML
-    private Label textData;
+    private TextArea textData;
     
     private Virus virus;
     private Stage stage;
