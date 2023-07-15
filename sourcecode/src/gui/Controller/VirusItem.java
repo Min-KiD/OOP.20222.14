@@ -25,7 +25,7 @@ public class VirusItem {
     
     
     @FXML
-    private void click(MouseEvent mouseEvent) throws IOException {
+    void click(MouseEvent mouseEvent) throws IOException {
         myListener.onClickListener(virus, mouseEvent);
     }
     
