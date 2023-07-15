@@ -4,28 +4,33 @@ import virus.construct.AcidNucleic;
 import virus.construct.Capsid;
 
 public class RetroVirus extends EnvelopedVirus {
-	private String spike;
 	private String reverse;
-	private String rna;
 
-	public String getSpike() {
-		return spike;
-	}
-
+	private static String reverseImage = "/src/gui/media/RetroVirus/reverse.png";
+	private static String acidNucleicImage = "/src/gui/media/RetroVirus/acidNucleic.png";
+	private static String envelopeImage = "/src/gui/media/RetroVirus/envelope.png";
+	
 	public String getReverse() {
 		return reverse;
 	}
-
-	public String getRna() {
-		return rna;
+	
+	public String getAcidNucleicImage() {
+		return acidNucleicImage;
+	}
+	
+	public String getEnvelopeImage() {
+		return envelopeImage;
 	}
 
-	public RetroVirus(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid,Enveloped envelopedVirus,
-    		String spike,String reverse,String rna) {
-		super(typeOfAcidNucleic, typeOfNucleocapsid, envelopedVirus);
-		this.spike = spike;
+	
+	public String getReverseImage() {
+		return reverseImage;
+	}
+
+	public RetroVirus(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid,Envelope envelope,
+    		String reverse) {
+		super(typeOfAcidNucleic, typeOfNucleocapsid, envelope);
 		this.reverse = reverse;
-		this.rna = rna;
 	}
 
 }
