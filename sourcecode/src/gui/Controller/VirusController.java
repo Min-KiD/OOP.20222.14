@@ -66,7 +66,10 @@ public class VirusController {
 
     @FXML
     void sendHome(ActionEvent event) throws IOException {
-    	Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/View/Main.fxml")));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/View/Main.fxml"));
+		MainController controller = new MainController();
+		loader.setController(controller);
+		Parent root = loader.load();
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

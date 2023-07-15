@@ -1,9 +1,6 @@
 package run;
 
 import java.io.File;
-import java.util.List;
-import java.util.Objects;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,13 +10,17 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import virus.Virus;
 import virus.setup.Setup;
+import gui.Controller.*;
 
 public class Running extends Application {
 	
 	@Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/gui/View/Menu.fxml")));
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/View/Main.fxml"));
+    		MainController controller = new MainController();
+    		loader.setController(controller);
+    		Parent root = loader.load();
             primaryStage.getIcons().add(new Image(new File("src/gui/media/IconVirus.png").toURI().toString()));
             primaryStage.setTitle("Virus");
             primaryStage.initStyle(StageStyle.DECORATED);

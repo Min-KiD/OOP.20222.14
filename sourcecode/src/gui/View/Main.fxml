@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="-4.0" layoutY="-4.0" prefHeight="775.0" prefWidth="280.0" style="-fx-background-color: #393351;">
+      <AnchorPane layoutX="-4.0" layoutY="-4.0" prefHeight="768.0" prefWidth="290.0" style="-fx-background-color: #393351; -fx-border-radius: 30;">
          <children>
             <VBox alignment="BOTTOM_LEFT" layoutX="2.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="220.0" prefWidth="288.0">
                <children>
