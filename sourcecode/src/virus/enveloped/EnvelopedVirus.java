@@ -6,19 +6,20 @@ import virus.construct.Capsid;
 
 public abstract class EnvelopedVirus extends Virus{
 
-	private Enveloped envelopedVirus;
+	private Envelope envelopedVirus;
+	private static String structure = "/src/gui/media/evelope.png";
 
-    public EnvelopedVirus(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid, Enveloped envelopedVirus) {
+    public EnvelopedVirus(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid, Envelope envelopedVirus) {
         super(typeOfAcidNucleic, typeOfNucleocapsid);
         this.envelopedVirus = envelopedVirus;
     }
 
-    public Enveloped getEnvelopedVirus() {
+    public Envelope getEnvelopedVirus() {
         return envelopedVirus;
     }
-
-//    public void setEnvelopedVirus(Enveloped envelopedVirus) {
-//        this.envelopedVirus = envelopedVirus;
-//    }
+    
+    public String getStructure() {
+    	return structure;
+    }
 
 }

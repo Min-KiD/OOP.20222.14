@@ -5,27 +5,32 @@ import virus.construct.Capsid;
 
 public class Herpesvirusdae extends EnvelopedVirus {
 	private String tegument;
-	private String dna;
-	private String gly;
+	
+	private static String tegumentImage = "/src/gui/media/HerpesVirus/tegument.png";
+	private static String acidNucleicImage = "/src/gui/media/HerpesVirus/acidNucleic.png";
+	private static String envelopeImage = "/src/gui/media/HerpesVirus/envelope.png";
 
 	public String getTegument() {
 		return tegument;
 	}
-
-	public String getDna() {
-		return dna;
+	
+	public String getTegumentImage() {
+		return tegumentImage;
 	}
 	
-	public String getGly() {
-		return gly;
+	public String getAcidNucleicImage() {
+		return acidNucleicImage;
+	}
+	
+	public String getEnvelopeImage() {
+		return envelopeImage;
 	}
 
-	public Herpesvirusdae(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid,Enveloped envelopedVirus,
-			String tegument, String dna, String gly) {
-		super(typeOfAcidNucleic, typeOfNucleocapsid, envelopedVirus);
-		this.tegument = tegument;
-		this.dna = dna;
 
+	public Herpesvirusdae(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid, 
+			Envelope envelope, String tegument) {
+		super(typeOfAcidNucleic, typeOfNucleocapsid, envelope);
+		this.tegument = tegument;
 	}
 
 }
