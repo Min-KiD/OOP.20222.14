@@ -5,10 +5,7 @@ import virus.construct.Capsid;
 
 public class Herpesvirusdae extends EnvelopedVirus {
 	private String tegument;
-	
-	private static String tegumentImage = "/src/gui/media/HerpesVirus/tegument.png";
-	private static String acidNucleicImage = "/src/gui/media/HerpesVirus/acidNucleic.png";
-	private static String envelopeImage = "/src/gui/media/HerpesVirus/envelope.png";
+	private static String tegumentImage = "virus/enveloped/Image/tegument.png";
 
 	public String getTegument() {
 		return tegument;
@@ -17,19 +14,10 @@ public class Herpesvirusdae extends EnvelopedVirus {
 	public String getTegumentImage() {
 		return tegumentImage;
 	}
-	
-	public String getAcidNucleicImage() {
-		return acidNucleicImage;
-	}
-	
-	public String getEnvelopeImage() {
-		return envelopeImage;
-	}
-
 
 	public Herpesvirusdae(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid, 
-			Envelope envelope, String tegument) {
-		super(typeOfAcidNucleic, typeOfNucleocapsid, envelope);
+			Envelope envelope, String tegument, String structureImage, String acidNucleicImage, String capsidImage, String envelopeImage, String inputVideo) {
+		super(typeOfAcidNucleic, typeOfNucleocapsid, envelope, structureImage, acidNucleicImage, capsidImage, envelopeImage, inputVideo);
 		this.tegument = tegument;
 	}
 

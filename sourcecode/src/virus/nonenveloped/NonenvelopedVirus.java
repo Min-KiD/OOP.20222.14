@@ -6,8 +6,9 @@ import virus.Virus;
 
 public abstract class NonenvelopedVirus extends Virus {
 
-	public NonenvelopedVirus(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid) {
-        super(typeOfAcidNucleic, typeOfNucleocapsid);
+	public NonenvelopedVirus(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid,
+                             String structureImage, String acidNucleicImage, String caspidImage, String envelopeImage, String inputVideo) {
+        super(typeOfAcidNucleic, typeOfNucleocapsid, structureImage, acidNucleicImage, caspidImage, envelopeImage, inputVideo);
     }
 
 }

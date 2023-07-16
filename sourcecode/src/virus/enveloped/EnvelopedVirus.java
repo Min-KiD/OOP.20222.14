@@ -7,11 +7,17 @@ import virus.construct.Capsid;
 public abstract class EnvelopedVirus extends Virus{
 
 	private Envelope envelopedVirus;
-	private static String structure = "/src/gui/media/evelope.png";
 
-    public EnvelopedVirus(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid, Envelope envelopedVirus) {
-        super(typeOfAcidNucleic, typeOfNucleocapsid);
+	private static String structure = "virus/enveloped/Image/envelope.png";
+
+    public EnvelopedVirus(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid, Envelope envelopedVirus,
+                          String structureImage, String acidNucleicImage, String caspidImage, String envelopeImage, String inputVideo) {
+        super(typeOfAcidNucleic, typeOfNucleocapsid, structureImage, acidNucleicImage, caspidImage, envelopeImage, inputVideo);
         this.envelopedVirus = envelopedVirus;
+    }
+
+    public static String getAcidNucleicImage() {
+        return "";
     }
 
     public Envelope getEnvelopedVirus() {
@@ -21,5 +27,4 @@ public abstract class EnvelopedVirus extends Virus{
     public String getStructure() {
     	return structure;
     }
-
 }

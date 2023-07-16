@@ -1,26 +1,37 @@
 package gui.Controller;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
+import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.scene.layout.StackPane;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import virus.Virus;
 import virus.nonenveloped.NonenvelopedVirus;
+import virus.enveloped.EnvelopedVirus;
 
-public class VirusController {
+public class VirusController implements Initializable {
 
     @FXML
     private ImageView mainImage;
@@ -30,6 +41,8 @@ public class VirusController {
 
     @FXML
     private MenuButton specialAttributes;
+    @FXML
+    private ImageView imageView;
     
     @FXML
     private TextArea textData;
@@ -53,10 +66,11 @@ public class VirusController {
 	            }
 	            
 	        );
+
     	FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/gui/View/VideoPlayerView.fxml")));
-    	VideoPlayerController controller = new VideoPlayerController(virus, r);
-    	loader.setController(controller);
-    	Parent root = loader.load();
+        VideoPlayerController controller = new VideoPlayerController(virus, r);
+        loader.setController(controller);
+        Parent root = loader.load();
     	controller.check();
         Scene scene1 = new Scene(root);
         scene1.setRoot(root);
@@ -77,25 +91,95 @@ public class VirusController {
     }
 
     @FXML
-    void showStructure() {
-    	
+    void showStructure(ActionEvent event) {
+        String txt = virus.getTypeOfNucleoapsid().getTypeOfStructureCapsid();
+        textData.setText(txt);
+        String imgpath = virus.getStructureImage();
+        Image image = new Image(imgpath);
+        ImageView imageView = new ImageView(image);
+
+        double desiredWidth = 750.0;
+        double aspectRatio = image.getWidth() / image.getHeight();
+        double desiredHeight = desiredWidth / aspectRatio;
+
+        imageView.setFitWidth(desiredWidth);
+        imageView.setFitHeight(desiredHeight);
+        Stage stage = new Stage();
+
+        Scene currentScene = ((Node) event.getSource()).getScene();
+
+        Parent root = currentScene.getRoot();
+
+        ((Pane) root).getChildren().add(imageView);
     }
-    
+
     @FXML
-    void showAcidNucleic(ActionEvent event) {
+    void showAcidNucleic(ActionEvent event) throws FileNotFoundException {
     	String txt = virus.getTypeOfAcidNucleic().getTypeOfAcidNucleic();
     	textData.setText(txt);
+        String imgpath = virus.getacidNucleicImage();
+        Image image = new Image(imgpath);
+        ImageView imageView = new ImageView(image);
+
+        double desiredWidth = 750.0;
+        double aspectRatio = image.getWidth() / image.getHeight();
+        double desiredHeight = desiredWidth / aspectRatio;
+
+        imageView.setFitWidth(desiredWidth);
+        imageView.setFitHeight(desiredHeight);
+        Stage stage = new Stage();
+
+        Scene currentScene = ((Node) event.getSource()).getScene();
+
+        Parent root = currentScene.getRoot();
+
+        ((Pane) root).getChildren().add(imageView);
     }
     
     @FXML
     void showCapsid(ActionEvent event) {
     	String txt = virus.getTypeOfNucleoapsid().getTypeOfStructureCapsid();
     	textData.setText(txt);
+        String imgpath = virus.getCaspidImage();
+        Image image = new Image(imgpath);
+        ImageView imageView = new ImageView(image);
+
+        double desiredWidth = 750.0;
+        double aspectRatio = image.getWidth() / image.getHeight();
+        double desiredHeight = desiredWidth / aspectRatio;
+
+        imageView.setFitWidth(desiredWidth);
+        imageView.setFitHeight(desiredHeight);
+        Stage stage = new Stage();
+
+        Scene currentScene = ((Node) event.getSource()).getScene();
+
+        Parent root = currentScene.getRoot();
+
+        ((Pane) root).getChildren().add(imageView);
     }
 
     @FXML
     void showEnvelope(ActionEvent event) {
+        String txt = virus.getTypeOfNucleoapsid().getTypeOfStructureCapsid();
+        textData.setText(txt);
+        String imgpath = virus.getEnvelopeImage();
+        Image image = new Image(imgpath);
+        ImageView imageView = new ImageView(image);
 
+        double desiredWidth = 750.0;
+        double aspectRatio = image.getWidth() / image.getHeight();
+        double desiredHeight = desiredWidth / aspectRatio;
+
+        imageView.setFitWidth(desiredWidth);
+        imageView.setFitHeight(desiredHeight);
+        Stage stage = new Stage();
+
+        Scene currentScene = ((Node) event.getSource()).getScene();
+
+        Parent root = currentScene.getRoot();
+
+        ((Pane) root).getChildren().add(imageView);
     }
     
     public void check() {
@@ -116,5 +200,21 @@ public class VirusController {
         x = event.getSceneX();
         y = event.getSceneY();
     }
-    
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String txt = virus.getTypeOfNucleoapsid().getTypeOfStructureCapsid();
+        textData.setText(txt);
+        String imgpath = virus.getStructureImage();
+        Image image = new Image(imgpath);
+        //ImageView imageView = new ImageView(image);
+        imageView.setImage(image);
+
+        double desiredWidth = 750.0;
+        double aspectRatio = image.getWidth() / image.getHeight();
+        double desiredHeight = desiredWidth / aspectRatio;
+
+        imageView.setFitWidth(desiredWidth);
+        imageView.setFitHeight(desiredHeight);
+    }
 }

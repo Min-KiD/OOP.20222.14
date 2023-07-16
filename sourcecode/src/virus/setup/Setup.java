@@ -58,7 +58,12 @@ public class Setup {
         		+ "The C-terminal domain forms a matrix-like lattice that adds to the extra-thickness of the envelope."
         		+ " Different species can have either N- or O-linked glycans in their protein amino-terminal domain."
         		+ " The M protein is crucial during the assembly, budding, envelope formation,"
-        		+ " and pathogenesis stages of the virus lifecycle");
+        		+ " and pathogenesis stages of the virus lifecycle",
+				new String("/virus/enveloped/Image/corona/corona.png"),
+				new String("/virus/enveloped/Image/corona/acidNucleic.png"),
+				new String("/virus/enveloped/Image/corona/caspid.png"),
+				new String("/virus/enveloped/Image/corona/envelope.png"),
+				new String("https://www.youtube.com/embed/cSbfEXy9_0I?autoplay=1"));
 		
 		RetroVirus retro1 = new RetroVirus(new AcidNucleic("RNA, DNA"),
 				new Capsid("Protein caspid are Group-specific antigen (gag) proteins. "
@@ -74,7 +79,12 @@ public class Setup {
 				+ "three distinct functions: protection from the extracellular environment via the lipid bilayer,"
 				+ " enabling the retrovirus to enter/exit host cells through endosomal membrane trafficking,"
 				+ " and the ability to directly enter cells by fusing with their membranes", "Retro glyco"),
-				"Reverse transcriptase is the catalyst for reverse transcription between RNA and DNA");
+				"Reverse transcriptase is the catalyst for reverse transcription between RNA and DNA",
+				new String("/virus/enveloped/Image/retro/retro.png"),
+				new String("/virus/enveloped/Image/retro/acidNucleic.png"),
+				new String("/virus/enveloped/Image/retro/caspid.png"),
+				new String("/virus/enveloped/Image/retro/envelope.png"),
+				new String("https://www.youtube.com/embed/cSbfEXy9_0I?autoplay=1"));
 		
 		Herpesvirusdae herpes1 = new Herpesvirusdae(new AcidNucleic("DNA"),
 				new Capsid("A relatively large, monopartite, double-stranded, linear DNA genome encoding 100-200"
@@ -85,7 +95,12 @@ public class Setup {
 				+ " viral proteins and viral mRNAs and a lipid bilayer membrane. "
 				+ "Tegument is around the double-stranded DNA genome into an icosahedral nucleocapsid. "
 				+ "Tegument contains filaments, each 7 nm wide. It is an amorphous layer with some structured regions. "
-				+ "Tegument contains 26 proteins");
+				+ "Tegument contains 26 proteins",
+				new String("/virus/enveloped/Image/herpes/herpes.png"),
+				new String("/virus/enveloped/Image/herpes/acidNucleic.png"),
+				new String("/virus/enveloped/Image/herpes/caspid.png"),
+				new String("/virus/enveloped/Image/herpes/envelope.png"),
+				new String("https://www.youtube.com/embed/cSbfEXy9_0I?autoplay=1"));
 		
 		AstroVirus astro1 = new AstroVirus(new AcidNucleic("RNA"),
 				new Capsid("Cubic capsids. The human astrovirus capsid spikes have a distinct structure."
@@ -99,7 +114,12 @@ public class Setup {
 						+ " does not have similar homology to other known viral proteins, but the closest"
 						+ " would be hepatitis E virus"),
 				"non-enveloped RNA viruses. Astrovirus has a non-segmented, single stranded,"
-				+ " positive sense RNA genome within a non-enveloped icosahedral capsid");
+				+ " positive sense RNA genome within a non-enveloped icosahedral capsid",
+				new String("/virus/nonenveloped/nonenveloped/astro/astro.png"),
+				new String("/virus/nonenveloped/nonenveloped/astro/acidNucleic.png"),
+				new String("/virus/nonenveloped/nonenveloped/astro/caspid.png"),
+				new String(""),
+				new String("https://www.youtube.com/embed/tApfaDs46qo?autoplay=1"));
 		
 		Reoviridae reov1 = new Reoviridae(new AcidNucleic("RNA (double-stranded RNA)"),
 				new Capsid("An icosahedral capsid composed of an outer (T=13) and inner (T=2) protein shell. "
@@ -112,7 +132,12 @@ public class Setup {
 				+ "Reoviruses have a unique structure which is contains a glycolisated spike protein on the surface",
 				"The outer capsid has icosahedral symmetry and is composed of between 92 and 180 hexagonal"
 				+ " and pentagonal subunits (capsomers). The outer capsid is composed of four proteins:"
-				+ " sigma-1, sigma-3, lambda-2, and mu-1");
+				+ " sigma-1, sigma-3, lambda-2, and mu-1",
+				new String("/virus/nonenveloped/nonenveloped/reov/reov.png"),
+				new String("/virus/nonenveloped/nonenveloped/reov/acidNucleic.png"),
+				new String("/virus/nonenveloped/nonenveloped/reov/caspid.png"),
+				new String(""),
+				new String("https://www.youtube.com/embed/tApfaDs46qo?autoplay=1"));
 		
 		Adenoviridae adeno1 = new Adenoviridae(new AcidNucleic("DNA"),
 				new Capsid("an icosahedral capsid"), 
@@ -126,7 +151,12 @@ public class Setup {
 				"240 hexon proteins make up the bulk of the capsid",
 				"12 penton bases cap the icosahedron's corners",
 				"The penton bases are associated with protruding fibers that aid in attachment"
-				+ " to the host cell via the receptor on its surface");
+				+ " to the host cell via the receptor on its surface",
+				new String("/virus/nonenveloped/nonenveloped/adeno/adeno.png"),
+				new String("/virus/nonenveloped/nonenveloped/adeno/acidNucleic.png"),
+				new String("/virus/nonenveloped/nonenveloped/adeno/caspid.png"),
+				new String(""),
+				new String("https://www.youtube.com/embed/tApfaDs46qo?autoplay=1"));
 		
 		corona = corona1;
 		herpes = herpes1;
@@ -146,4 +176,12 @@ public class Setup {
 		return VirusList;
 	}
 
+	public static List<String> getVirusListString() {
+		List<String> res = new ArrayList();
+		for (Virus virus:VirusList) {
+			String tmp = virus.getClass().getName().toString();
+			res.add(tmp);
+		}
+		return res;
+	}
 }
