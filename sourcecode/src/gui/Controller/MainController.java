@@ -3,27 +3,27 @@ package gui.Controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.stream.IntStream;
 
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -43,6 +43,7 @@ public class MainController implements Initializable {
 //    private File file;
     private boolean envelopeVirusStatus = false;
     private boolean nonEnvelopeVirusStatus = false;
+    private boolean searchGridStatus = true;
     @FXML
     private MediaView mediaView;
     @FXML
@@ -58,11 +59,17 @@ public class MainController implements Initializable {
     @FXML
     private GridPane grid1;
     @FXML
+    private Pane searchGridView;
+    @FXML
     private ImageView imageView;
     private MyListener myListener;
-    
+    @FXML
+    private ListView<String> suggestionList;
+    @FXML
+    private TextField searchField;
+    private ObservableList<String> suggestions;
     private Virus chosenItem;
-    
+    @FXML
     public void initialize(URL arg0, ResourceBundle arg1) {
     	
     	//stage = new Stage();
@@ -73,6 +80,23 @@ public class MainController implements Initializable {
                 showVirusScene(event);
             }
         };
+
+        // Handle user input to show suggestion
+        suggestions = FXCollections.observableArrayList(Setup.getVirusListString());
+        suggestionList.setItems(suggestions);
+
+        FilteredList<String> filteredData = new FilteredList<>(suggestions, s -> true);
+        searchField.textProperty().addListener(obs->{
+            String filter = searchField.getText();
+            if(filter == null || filter.length() == 0) {
+                filteredData.setPredicate(s -> true);
+            }
+            else {
+                filteredData.setPredicate(s -> s.toLowerCase().contains(filter.toLowerCase()));
+            }
+        });
+        suggestionList.setItems(filteredData);
+
         int column = 0;
         int row = 1;
         for (int i = 0; i < Setup.getVirusList().size(); i++) {
@@ -146,9 +170,32 @@ public class MainController implements Initializable {
             }
             
         }
-
+        searchGridView.setVisible(searchGridStatus);
         envelopeVirusView.setVisible(envelopeVirusStatus);
         nonEnvelopeVirusView.setVisible(nonEnvelopeVirusStatus);
+    }
+
+    @FXML
+    private void handleCellClick(MouseEvent event) throws IOException {
+        String selectedValue = suggestionList.getSelectionModel().getSelectedItem();
+        if (selectedValue != null) {
+            for (Virus virus : Setup.getVirusList()) {
+                if (virus.getClass().getName().toString() == selectedValue) {
+                    chosenItem = virus;
+                }
+            }
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/gui/View/VirusView.fxml")));
+            VirusController controller = new VirusController(chosenItem);
+            loader.setController(controller);
+            Parent root = loader.load();
+            controller.check();
+            Scene scene1 = new Scene(root);
+            scene1.setRoot(root);
+            stage.setScene(scene1);
+            stage.show();
+        }
+        else {}
     }
 
     @FXML
@@ -158,7 +205,8 @@ public class MainController implements Initializable {
             nonEnvelopeVirusStatus = true;
             envelopeVirusView.setVisible(false);
             envelopeVirusStatus = false;
-
+            searchGridStatus = false;
+            searchGridView.setVisible(false);
         } else {
             nonEnvelopeVirusView.setVisible(false);
             nonEnvelopeVirusStatus = false;
@@ -172,6 +220,8 @@ public class MainController implements Initializable {
             envelopeVirusStatus = true;
             nonEnvelopeVirusView.setVisible(false);
             nonEnvelopeVirusStatus = false;
+            searchGridStatus = false;
+            searchGridView.setVisible(false);
         } else {
             envelopeVirusView.setVisible(false);
             envelopeVirusStatus = false;
@@ -183,11 +233,16 @@ public class MainController implements Initializable {
     @FXML
     void help(ActionEvent e) {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/GUI/mainmenu/FXML/help.fxml")));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/View/HelpView.fxml"));
+            HelpController controller = new HelpController();
+            loader.setController(controller);
+            Parent root = loader.load();
+            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e1) {
+
         }
     }
 
@@ -240,6 +295,7 @@ public class MainController implements Initializable {
     	Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/gui/View/VirusView.fxml")));
 		VirusController controller = new VirusController(chosenItem);
+        System.out.println(chosenItem);
     	loader.setController(controller);
     	Parent root = loader.load();
     	controller.check(); //try to remove this 

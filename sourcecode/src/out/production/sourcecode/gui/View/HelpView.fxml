@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane layoutX="-4.0" layoutY="-4.0" prefHeight="768.0" prefWidth="290.0" style="-fx-background-color: #393351; -fx-border-radius: 30;">
+            <children>
+                <VBox alignment="BOTTOM_LEFT" layoutX="2.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="220.0" prefWidth="288.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#Introduction" prefHeight="55.0" prefWidth="298.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="Introduction" textFill="WHITE">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#Howtouse" prefHeight="56.0" prefWidth="297.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="How to use?" textFill="WHITE">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#aboutus" prefHeight="56.0" prefWidth="325.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="About us" textFill="WHITE">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#goback" prefHeight="58.0" prefWidth="287.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="Go back" textFill="WHITE">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </VBox>
+                <Pane layoutY="150.0" prefHeight="68.0" prefWidth="288.0" style="-fx-background-color: #FA2C56;">
+                    <children>
+                        <Label alignment="CENTER" layoutX="107.0" layoutY="17.0" prefHeight="34.0" prefWidth="74.0" text="HELP" textAlignment="CENTER" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="23.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+            </children>
+        </AnchorPane>
+        <TextArea fx:id="textHelp" editable="false" layoutX="302.0" layoutY="17.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="735.0" prefWidth="710.0" style="-fx-background-color: #2F2B43;" wrapText="true">
+            <font>
+                <Font size="18.0" />
+            </font></TextArea>
+    </children>
+</AnchorPane>

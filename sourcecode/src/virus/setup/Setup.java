@@ -176,4 +176,12 @@ public class Setup {
 		return VirusList;
 	}
 
+	public static List<String> getVirusListString() {
+		List<String> res = new ArrayList();
+		for (Virus virus:VirusList) {
+			String tmp = virus.getClass().getName().toString();
+			res.add(tmp);
+		}
+		return res;
+	}
 }

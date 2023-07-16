@@ -67,5 +67,18 @@
             </GridPane>
          </content>
       </ScrollPane>
+      <Pane fx:id="searchGridView" layoutX="390.0" layoutY="235.0" prefHeight="287.0" prefWidth="534.0">
+         <children>
+            <ListView fx:id="suggestionList" layoutY="54.0" onMouseClicked="#handleCellClick" prefHeight="181.0" prefWidth="534.0">
+            </ListView>
+            <TextField fx:id="searchField" layoutY="7.0" prefHeight="42.0" prefWidth="534.0" promptText="Enter virus name">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></TextField>
+            <Button layoutX="118.0" layoutY="239.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="298.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="Select in the list above to go to the page." textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Button>
+         </children></Pane>
    </children>
 </AnchorPane>

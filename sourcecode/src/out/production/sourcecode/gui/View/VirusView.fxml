@@ -7,7 +7,7 @@
 
 <AnchorPane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #2F2B43;" styleClass="button1" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="mainImage" fitHeight="600.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView" fitHeight="600.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="894.0" layoutY="657.0" mnemonicParsing="false" onAction="#sendHome" prefHeight="79.0" prefWidth="114.0" style="-fx-background-radius: 20 20 20 20;" styleClass="button2" stylesheets="@fullpackstyling.css" text="HOME" textFill="WHITE" />
       <HBox layoutX="34.0" layoutY="630.0" prefHeight="61.0" prefWidth="731.0">
          <children>

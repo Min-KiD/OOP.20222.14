@@ -43,4 +43,11 @@ public abstract class Virus {
     }
 
     public String getInputVideo() { return inputVideo; }
+
+    public boolean contains(String filter) {
+        if (this.getClass().getName().toString().contains(filter)) {
+            return true;
+        }
+        else { return false; }
+    }
 }

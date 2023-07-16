@@ -3,8 +3,11 @@ package gui.Controller;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
+import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -28,7 +31,7 @@ import virus.Virus;
 import virus.nonenveloped.NonenvelopedVirus;
 import virus.enveloped.EnvelopedVirus;
 
-public class VirusController {
+public class VirusController implements Initializable {
 
     @FXML
     private ImageView mainImage;
@@ -38,6 +41,8 @@ public class VirusController {
 
     @FXML
     private MenuButton specialAttributes;
+    @FXML
+    private ImageView imageView;
     
     @FXML
     private TextArea textData;
@@ -195,5 +200,21 @@ public class VirusController {
         x = event.getSceneX();
         y = event.getSceneY();
     }
-    
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String txt = virus.getTypeOfNucleoapsid().getTypeOfStructureCapsid();
+        textData.setText(txt);
+        String imgpath = virus.getStructureImage();
+        Image image = new Image(imgpath);
+        //ImageView imageView = new ImageView(image);
+        imageView.setImage(image);
+
+        double desiredWidth = 750.0;
+        double aspectRatio = image.getWidth() / image.getHeight();
+        double desiredHeight = desiredWidth / aspectRatio;
+
+        imageView.setFitWidth(desiredWidth);
+        imageView.setFitHeight(desiredHeight);
+    }
 }
