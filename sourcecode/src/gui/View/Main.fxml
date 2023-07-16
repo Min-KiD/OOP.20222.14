@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="-4.0" layoutY="-4.0" prefHeight="768.0" prefWidth="290.0" style="-fx-background-color: #393351; -fx-border-radius: 30;">
+         <children>
+            <VBox alignment="BOTTOM_LEFT" layoutX="2.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="220.0" prefWidth="288.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#envelopeVirus" prefHeight="55.0" prefWidth="298.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="Enveloped Virus" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#nonEnvelopeVirus" prefHeight="56.0" prefWidth="297.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="Non-enveloped Virus" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#exit" prefHeight="56.0" prefWidth="325.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="Exit" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#help" prefHeight="58.0" prefWidth="287.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="Help" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <Pane layoutY="150.0" prefHeight="68.0" prefWidth="288.0" style="-fx-background-color: #FA2C56;">
+               <children>
+                  <Label layoutX="107.0" layoutY="17.0" prefHeight="34.0" prefWidth="74.0" text="HOME" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <ScrollPane fx:id="envelopeVirusView" layoutX="286.0" layoutY="255.0" prefHeight="250.0" prefWidth="742.0" style="-fx-background-color: transparent;">
+         <content>
+            <GridPane fx:id="grid" prefHeight="247.0" prefWidth="738.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="250.0" prefWidth="250.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <ScrollPane fx:id="nonEnvelopeVirusView" layoutX="286.0" layoutY="255.0" prefHeight="247.0" prefWidth="742.0" style="-fx-background-color: transparent;" visible="false">
+         <content>
+            <GridPane fx:id="grid1" prefHeight="247.0" prefWidth="740.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="250.0" prefWidth="250.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
