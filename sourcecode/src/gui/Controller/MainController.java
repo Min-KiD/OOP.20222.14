@@ -8,7 +8,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
-
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.*;
@@ -71,9 +70,7 @@ public class MainController implements Initializable {
     private Virus chosenItem;
     @FXML
     public void initialize(URL arg0, ResourceBundle arg1) {
-    	
-    	//stage = new Stage();
-    	myListener = new MyListener() {
+        myListener = new MyListener() {
             @Override
             public void onClickListener(Virus virus, MouseEvent event) throws IOException {
                 chosenItem = virus;
@@ -210,6 +207,8 @@ public class MainController implements Initializable {
         } else {
             nonEnvelopeVirusView.setVisible(false);
             nonEnvelopeVirusStatus = false;
+            searchGridStatus = true;
+            searchGridView.setVisible(true);
         }
     }
 
@@ -225,6 +224,8 @@ public class MainController implements Initializable {
         } else {
             envelopeVirusView.setVisible(false);
             envelopeVirusStatus = false;
+            searchGridStatus = true;
+            searchGridView.setVisible(true);
         }
 
 
