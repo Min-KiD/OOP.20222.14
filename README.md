@@ -4,6 +4,7 @@
 - Ta Ngoc Minh 20214918
 - Nguyen Tung Luong 20214913
 - Dao Ha Xuan Mai 20210562
+
 This is our project in OOP subject in HUST uni, for details of assignment, please visit our `report`
 
 The purpose of this project is to help everyone understand different type of viruses, as well as the way they infect in order to have the basic knowledge to prevent them
