@@ -7,9 +7,10 @@
 <AnchorPane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MediaView fx:id="mediaVideo" fitHeight="500.0" fitWidth="800.0" />
-      <Button layoutX="146.0" layoutY="525.0" mnemonicParsing="false" onAction="#skipMedia" prefHeight="48.0" prefWidth="91.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="SKIP " textFill="WHITE" />
-      <Button layoutX="350.0" layoutY="525.0" mnemonicParsing="false" onAction="#playMedia" prefHeight="48.0" prefWidth="101.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="PLAY/PAUSE" textFill="WHITE" />
-      <Button layoutX="566.0" layoutY="525.0" mnemonicParsing="false" onAction="#resetMedia" prefHeight="48.0" prefWidth="91.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="RESET" textFill="WHITE" />
-      <Button layoutX="731.0" layoutY="560.0" mnemonicParsing="false" onAction="#prevScene" text="go back" />
+<!--      <Button layoutX="146.0" layoutY="525.0" mnemonicParsing="false" onAction="#skipMedia" prefHeight="48.0" prefWidth="91.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="SKIP " textFill="WHITE" />-->
+      <Button layoutX="350.0" layoutY="525.0" mnemonicParsing="false" onAction="#playMedia" prefHeight="48.0" prefWidth="101.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="PLAY" textFill="WHITE" />
+<!--      <Button layoutX="566.0" layoutY="525.0" mnemonicParsing="false" onAction="#resetMedia" prefHeight="48.0" prefWidth="91.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="RESET" textFill="WHITE" />-->
+      <Button layoutX="566.0" layoutY="525.0" mnemonicParsing="false" onAction="#prevScene" prefHeight="48.0" prefWidth="91.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="GO BACK" textFill="WHITE" />
+<!--      <Button layoutX="731.0" layoutY="560.0" mnemonicParsing="false" onAction="#prevScene" text="GO BACK" />-->
    </children>
 </AnchorPane>

@@ -6,7 +6,7 @@ import virus.construct.Capsid;
 public class Reoviridae extends NonenvelopedVirus {
 	private String innerC;
 	private String outerC;
-	
+
 	public String getInnerC() {
 		return innerC;
 	}
@@ -16,8 +16,9 @@ public class Reoviridae extends NonenvelopedVirus {
 	}
 
 	
-	public Reoviridae(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid, String innerC, String outerC) {
-		super(typeOfAcidNucleic, typeOfNucleocapsid);
+	public Reoviridae(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid, String innerC, String outerC,
+					  String structureImage, String acidNucleicImage, String capsidImage, String envelopeImage, String inputVideo) {
+		super(typeOfAcidNucleic, typeOfNucleocapsid, structureImage, acidNucleicImage, capsidImage, envelopeImage, inputVideo);
 		this.innerC = innerC;
 		this.outerC = outerC;
 		

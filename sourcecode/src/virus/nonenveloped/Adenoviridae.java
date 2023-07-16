@@ -8,7 +8,6 @@ public class Adenoviridae extends NonenvelopedVirus {
 	private String hexon;
 	private String penta;
 	private String fiber;
-
 	public String getDna() {
 		return dna;
 	}
@@ -26,8 +25,8 @@ public class Adenoviridae extends NonenvelopedVirus {
 	}
 
 	public Adenoviridae(AcidNucleic typeOfAcidNucleic, Capsid typeOfNucleocapsid, String dna, String hexon,
-			String penta, String fiber) {
-		super(typeOfAcidNucleic, typeOfNucleocapsid);
+			String penta, String fiber, String structureImage, String acidNucleicImage, String capsidImage, String envelopeImage, String inputVideo) {
+		super(typeOfAcidNucleic, typeOfNucleocapsid, structureImage, acidNucleicImage, capsidImage, envelopeImage, inputVideo);
 		this.dna = dna;
 		this.hexon = hexon;
 		this.penta = penta;
