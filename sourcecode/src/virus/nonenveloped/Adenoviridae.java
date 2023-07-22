@@ -1,5 +1,7 @@
 package virus.nonenveloped;
 
+import java.util.ArrayList;
+
 import virus.construct.AcidNucleic;
 import virus.construct.Capsid;
 
@@ -31,6 +33,22 @@ public class Adenoviridae extends NonenvelopedVirus {
 		this.hexon = hexon;
 		this.penta = penta;
 		this.fiber = fiber;
+	}
+	
+	@Override
+	public ArrayList<String> getSpecialInfo() {
+		// TODO Auto-generated method stub
+		ArrayList<String> info = new ArrayList<String>();
+		info.add(hexon);
+		info.add(penta);
+		info.add(fiber);
+		return info;
+	}
+
+	@Override
+	public ArrayList<String> getSpecialImage() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

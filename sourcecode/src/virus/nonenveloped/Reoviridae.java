@@ -1,5 +1,7 @@
 package virus.nonenveloped;
 
+import java.util.ArrayList;
+
 import virus.construct.AcidNucleic;
 import virus.construct.Capsid;
 
@@ -22,6 +24,20 @@ public class Reoviridae extends NonenvelopedVirus {
 		this.innerC = innerC;
 		this.outerC = outerC;
 		
+	}
+	
+	public ArrayList<String> getSpecialInfo() {
+		// TODO Auto-generated method stub
+		ArrayList<String> info = new ArrayList<String>();
+		info.add(innerC);
+		info.add(outerC);
+		return info;
+	}
+
+	@Override
+	public ArrayList<String> getSpecialImage() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

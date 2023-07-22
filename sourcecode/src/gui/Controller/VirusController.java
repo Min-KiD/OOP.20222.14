@@ -1,19 +1,15 @@
 package gui.Controller;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
+import javafx.scene.control.MenuItem;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.scene.layout.StackPane;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -29,7 +25,6 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import virus.Virus;
 import virus.nonenveloped.NonenvelopedVirus;
-import virus.enveloped.EnvelopedVirus;
 
 public class VirusController implements Initializable {
 
@@ -51,6 +46,7 @@ public class VirusController implements Initializable {
     private Stage stage;
     private double x = 0;
     private double y = 0;
+    private int index;
     
     public VirusController(Virus v) {
     	this.virus = v;
@@ -216,5 +212,27 @@ public class VirusController implements Initializable {
 
         imageView.setFitWidth(desiredWidth);
         imageView.setFitHeight(desiredHeight);
+        
+        for (int i = 0; i < virus.getSpecialInfo().size(); i++) {
+        	MenuItem menuItem = new MenuItem("Action "+(i+1));
+        	specialAttributes.getItems().add(menuItem);
+        	index = i;
+        	menuItem.setOnAction(new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent t) {
+                	textData.setText(virus.getSpecialInfo().get(index));
+                	try {
+                		String imgpath = virus.getSpecialImage().get(index);
+	                    Image image = new Image(imgpath);
+	                    //ImageView imageView = new ImageView(image);
+	                    imageView.setImage(image);
+                	} catch (IllegalArgumentException e) {
+                		
+                	}
+	                	
+                	
+                }
+            });
+        }
+        
     }
 }

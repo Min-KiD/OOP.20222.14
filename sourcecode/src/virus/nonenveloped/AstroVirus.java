@@ -1,5 +1,7 @@
 package virus.nonenveloped;
 
+import java.util.ArrayList;
+
 import virus.construct.AcidNucleic;
 import virus.construct.Capsid;
 
@@ -15,6 +17,18 @@ public class AstroVirus extends NonenvelopedVirus {
 					  String structureImage, String acidNucleicImage, String capsidImage, String envelopeImage, String inputVideo) {
 		super(typeOfAcidNucleic, typeOfNucleocapsid, structureImage, acidNucleicImage, capsidImage, envelopeImage, inputVideo);
 		this.rna = rna;
+	}
+	
+	public ArrayList<String> getSpecialInfo() {
+		// TODO Auto-generated method stub
+		ArrayList<String> info = new ArrayList<String>();
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> getSpecialImage() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -1,5 +1,7 @@
 package virus.enveloped;
 
+import java.util.ArrayList;
+
 import virus.construct.AcidNucleic;
 import virus.construct.Capsid;
 
@@ -7,8 +9,8 @@ public class CoronaVirus extends EnvelopedVirus {
 	private String envelopeProtein;
 	private String mProtein;
 	
-	private static String envelopeProteinImage = "/src/gui/media/CoronaVirus/envelopeProtein.png";
-	private static String mProteinImage = "/src/gui/media/CoronaVirus/mProtein.png";
+	private static String envelopeProteinImage = "/virus/enveloped/Image/corona/envelopeProtein.png";
+	private static String mProteinImage = "/virus/enveloped/Image/corona/mProtein.png";
 
 	public String getEnvelopeProtein() {
 		return envelopeProtein;
@@ -34,4 +36,23 @@ public class CoronaVirus extends EnvelopedVirus {
         this.mProtein = mProtein;
     }
 
+	@Override
+	public ArrayList<String> getSpecialInfo() {
+		// TODO Auto-generated method stub
+		ArrayList<String> info = new ArrayList<String>();
+		info.add(envelopeProtein);
+		info.add(mProtein);
+		return info;
+	}
+
+	@Override
+	public ArrayList<String> getSpecialImage() {
+		// TODO Auto-generated method stub
+		ArrayList<String> image = new ArrayList<String>();
+		image.add(envelopeProteinImage);
+		image.add(mProteinImage);
+		return image;
+	}
+    
+    
 }

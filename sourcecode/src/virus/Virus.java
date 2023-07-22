@@ -2,6 +2,7 @@ package virus;
 
 import virus.construct.AcidNucleic;
 import virus.construct.Capsid;
+import java.util.ArrayList;
 
 public abstract class Virus {
     private AcidNucleic typeOfAcidNucleic;
@@ -51,5 +52,8 @@ public abstract class Virus {
         else { return false; }
     }
     
+    public abstract ArrayList<String> getSpecialInfo();
+    
+    public abstract ArrayList<String> getSpecialImage();
     
 }
