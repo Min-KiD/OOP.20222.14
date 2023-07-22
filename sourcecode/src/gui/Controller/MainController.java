@@ -69,7 +69,7 @@ public class MainController implements Initializable {
     private ObservableList<String> suggestions;
     private Virus chosenItem;
     @FXML
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         myListener = new MyListener() {
             @Override
             public void onClickListener(Virus virus, MouseEvent event) throws IOException {

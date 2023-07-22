@@ -46,7 +46,6 @@ public class VirusController implements Initializable {
     private Stage stage;
     private double x = 0;
     private double y = 0;
-    private int index;
     
     public VirusController(Virus v) {
     	this.virus = v;
@@ -216,7 +215,7 @@ public class VirusController implements Initializable {
         for (int i = 0; i < virus.getSpecialInfo().size(); i++) {
         	MenuItem menuItem = new MenuItem("Action "+(i+1));
         	specialAttributes.getItems().add(menuItem);
-        	index = i;
+        	int index = i;
         	menuItem.setOnAction(new EventHandler<ActionEvent>() {
                 public void handle(ActionEvent t) {
                 	textData.setText(virus.getSpecialInfo().get(index));
@@ -226,6 +225,8 @@ public class VirusController implements Initializable {
 	                    //ImageView imageView = new ImageView(image);
 	                    imageView.setImage(image);
                 	} catch (IllegalArgumentException e) {
+                		
+                	} catch (NullPointerException e1) {
                 		
                 	}
 	                	
