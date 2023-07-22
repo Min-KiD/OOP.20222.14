@@ -68,7 +68,7 @@ public class MainController implements Initializable {
     private TextField searchField;
     private ObservableList<String> suggestions;
     private Virus chosenItem;
-    @FXML
+	
     public void initialize(URL arg0, ResourceBundle arg1) {
         myListener = new MyListener() {
             @Override
