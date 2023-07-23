@@ -1,37 +1,18 @@
 package gui.Controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.ResourceBundle;
-
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.media.MediaView;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import virus.Virus;
-import virus.enveloped.*;
-import virus.setup.Setup;
+
 
 public class HelpController implements Initializable {
 
