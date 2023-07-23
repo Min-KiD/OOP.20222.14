@@ -3,11 +3,9 @@ package gui.Controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collections;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.stream.IntStream;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.*;
@@ -68,7 +66,7 @@ public class MainController implements Initializable {
     private TextField searchField;
     private ObservableList<String> suggestions;
     private Virus chosenItem;
-    @FXML
+  
     public void initialize(URL url, ResourceBundle resourceBundle) {
         myListener = new MyListener() {
             @Override
@@ -174,25 +172,34 @@ public class MainController implements Initializable {
 
     @FXML
     private void handleCellClick(MouseEvent event) throws IOException {
-        String selectedValue = suggestionList.getSelectionModel().getSelectedItem();
+    	String selectedValue = suggestionList.getSelectionModel().getSelectedItem();
         if (selectedValue != null) {
             for (Virus virus : Setup.getVirusList()) {
                 if (virus.getClass().getName().toString() == selectedValue) {
                     chosenItem = virus;
                 }
             }
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/gui/View/VirusView.fxml")));
-            VirusController controller = new VirusController(chosenItem);
-            loader.setController(controller);
-            Parent root = loader.load();
-            controller.check();
-            Scene scene1 = new Scene(root);
-            scene1.setRoot(root);
-            stage.setScene(scene1);
-            stage.show();
+            
+	            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/gui/View/VirusView.fxml")));
+	            VirusController controller = new VirusController(chosenItem);
+            
+	            loader.setController(controller);
+            try {
+	            Parent root = loader.load();
+            
+	            controller.check();
+        	
+	            Scene scene1 = new Scene(root);
+	            scene1.setRoot(root);
+	            stage.setScene(scene1);
+	            stage.show();
+            } catch (Exception e) {
+            	System.out.println(controller);
+            }
         }
         else {}
+        
     }
 
     @FXML
@@ -294,16 +301,20 @@ public class MainController implements Initializable {
     
     public void showVirusScene(MouseEvent event) throws IOException {
     	Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    	FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/gui/View/VirusView.fxml")));
-		VirusController controller = new VirusController(chosenItem);
-        System.out.println(chosenItem);
-    	loader.setController(controller);
-    	Parent root = loader.load();
-    	controller.check(); //try to remove this 
-        Scene scene1 = new Scene(root);
-        scene1.setRoot(root);
-        stage.setScene(scene1);
-        stage.show();
+    	try { 
+	    	FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/gui/View/VirusView.fxml")));
+			VirusController controller = new VirusController(chosenItem);
+	        System.out.println(chosenItem);
+	    	loader.setController(controller);
+	    	Parent root = loader.load();
+	    	controller.check(); //try to remove this 
+	        Scene scene1 = new Scene(root);
+	        scene1.setRoot(root);
+	        stage.setScene(scene1);
+	        stage.show();
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
     }
 
 }

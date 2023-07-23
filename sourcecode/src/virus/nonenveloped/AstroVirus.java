@@ -21,7 +21,6 @@ public class AstroVirus extends NonenvelopedVirus {
 	
 	public ArrayList<String> getSpecialInfo() {
 		// TODO Auto-generated method stub
-		ArrayList<String> info = new ArrayList<String>();
 		return null;
 	}
 

@@ -33,9 +33,8 @@ public class Running extends Application {
         }
     }
 	
-	public static void main(String[] args) {
-		Setup setupIni = new Setup(); 	
-		setupIni.setup();
+	public static void main(String[] args) { 	
+		Setup.setup();
 		for (Virus item : Setup.getVirusList()){
         	System.out.println(item.getClass().getSimpleName()+" is a " + item.getTypeOfAcidNucleic().getTypeOfAcidNucleic() + " virus");
 		}
