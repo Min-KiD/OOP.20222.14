@@ -1,5 +1,6 @@
 package gui.Controller;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -7,6 +8,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.scene.control.MenuItem;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.scene.layout.StackPane;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,6 +30,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import virus.Virus;
 import virus.nonenveloped.NonenvelopedVirus;
+import virus.enveloped.EnvelopedVirus;
 
 public class VirusController implements Initializable {
 
@@ -233,7 +239,6 @@ public class VirusController implements Initializable {
                 	
                 }
             });
-        }
-        
+        } 
     }
 }
